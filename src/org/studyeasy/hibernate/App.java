@@ -39,6 +39,63 @@ public class App {
 		
 		*/
 		
+		/* List users from the database with where and like
+		
+		try {
+			
+			//2-Start transaction
+			session.beginTransaction();
+			
+			//3-Applying HQL
+			List<Users> users = session.createQuery("from users where firstName = 'noe'"
+					+ "OR last_name = 'GONZALEZ' or lastName like '%rai%%'")
+					.getResultList();
+			
+			for(Users temp : users) {
+				System.out.println(temp);
+			}
+
+		}finally {
+			session.close();
+			factory.close();
+		}	
+		
+			*/
+		
+		/*Update records using HQL
+		
+		try {
+			session.beginTransaction();
+			
+			// change all the passwords to 123456
+			session.createQuery("update users set password = '123456'").executeUpdate();
+			
+			session.createQuery("update users set password = 'mono' "
+					+ "where firstName = 'noe'")
+					.executeUpdate();
+			
+			session.getTransaction().commit();
+			
+		}finally {
+			session.close();
+			factory.close();
+		}
+
+  		*/
+		//delete a records from a database using HQL
+		
+		try {
+			session.beginTransaction();
+			
+			session.createQuery("delete from users where userId = '6'")
+					.executeUpdate();
+			
+			session.getTransaction().commit();
+			
+		}finally {
+			session.close();
+			factory.close();
+		}
 		
 		
 	}
